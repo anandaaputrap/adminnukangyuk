@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PengelolaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,8 +18,14 @@ use App\Http\Controllers\LoginController;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Route::controller(LoginController::class)->group(function(){
-    Route::get('/', 'index')->name('login');
+Route::controller(PengelolaController::class)->group(function(){
+    Route::get('/', 'indexlogin')->name('login');
     Route::post('login/proses', 'proses');
     Route::get('logout', 'logout')->name('logout');
+});
+
+Route::group(['middleware' => ['auth']],function(){
+    Route::group(['middleware' => ['cekUserLogin:1']],function(){
+        Route::resource('home', PengelolaController::class);
+    });
 });

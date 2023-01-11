@@ -12,51 +12,51 @@ class LoginController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        if ($user = Auth::user()) {
-            if($user->level == 1){
-                return redirect()->intended('home');
-            }
-        }
-        return view('login.login');
-    }
+    // public function index()
+    // {
+    //     if ($user = Auth::user()) {
+    //         if($user->level == 1){
+    //             return redirect()->intended('home');
+    //         }
+    //     }
+    //     return view('login.login');
+    // }
 
-    public function proses(Request $request)
-    {
-        $request->validate([
-            'username' => 'required',
-            'password' => 'required',
-        ],
-        [
-            'username.required' => 'Username Tidak Boleh Kosong'
-        ]
-    );
+    // public function proses(Request $request)
+    // {
+    //     $request->validate([
+    //         'username' => 'required',
+    //         'password' => 'required',
+    //     ],
+    //     [
+    //         'username.required' => 'Username Tidak Boleh Kosong'
+    //     ]
+    // );
 
-        $credential = $request->only('username', 'password');
+    //     $credential = $request->only('username', 'password');
 
-        if (Auth::attempt($credential)) {
-            $request->session()->regenerate();
-            $user = Auth::user();
-            if($user->level == 1){
-                return redirect()->intended('home');
-            }
+    //     if (Auth::attempt($credential)) {
+    //         $request->session()->regenerate();
+    //         $user = Auth::user();
+    //         if($user->level == 1){
+    //             return redirect()->intended('home');
+    //         }
 
-            return redirect()->intended('/');
-        }
+    //         return redirect()->intended('/');
+    //     }
 
-        return back()->withErrors([
-            'username' => 'Maaf Username Atau Password Anda Salah'
-        ])->onlyInput('username');
-    }
+    //     return back()->withErrors([
+    //         'username' => 'Maaf Username Atau Password Anda Salah'
+    //     ])->onlyInput('username');
+    // }
 
-    public function logout(Request $request)
-    {
-        Auth::logout();
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-        return redirect('/');
-    }
+    // public function logout(Request $request)
+    // {
+    //     Auth::logout();
+    //     $request->session()->invalidate();
+    //     $request->session()->regenerateToken();
+    //     return redirect('/');
+    // }
 
     /**
      * Show the form for creating a new resource.
