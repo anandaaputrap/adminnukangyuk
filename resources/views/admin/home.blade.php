@@ -35,7 +35,7 @@
             <hr class="sidebar-divider my-0">
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="{{ route('home.index') }}">
+                <a class="nav-link" href="{{ route('pengelola.home.index') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -49,24 +49,24 @@
             </div>
             <!-- Nav Item - Charts -->
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('pelanggan.index') }}">
+                <a class="nav-link" href="{{ route('pengelola.pelanggan.index') }}">
                     <i class="fas fa-fw fa-user"></i>
                     <span>Pelanggan</span></a>
             </li>
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('tukang.index') }}">
+                <a class="nav-link" href="{{ route('pengelola.tukang.index') }}">
                     <i class="fas fa-fw fa-people-carry"></i>
                     <span>Tukang</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('pesan.index') }}">
+                <a class="nav-link" href="{{ route('pengelola.pesan.index') }}">
                     <i class="fas fa-fw fa-cart-plus"></i>
                     <span>Pemesanan</span></a>
             </li>
             <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('bayar.index') }}">
+                <a class="nav-link" href="{{ route('pengelola.bayar.index') }}">
                     <i class="fas fa-fw fa-money-bill"></i>
                     <span>Pembayaran</span></a>
             </li>

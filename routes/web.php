@@ -30,7 +30,6 @@ Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 Route::group(['middleware' => 'level:1'], function () {
     Route::prefix('pengelola')->name('pengelola.')->group(function () {
         Route::resource('home', PengelolaController::class);
-        Route::resource('home', PengelolaController::class);
         Route::resource('pelanggan', PelangganController::class);
         Route::resource('tukang', TukangController::class);
         Route::resource('pesan', PemesananController::class);
