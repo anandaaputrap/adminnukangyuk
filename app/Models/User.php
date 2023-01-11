@@ -12,12 +12,13 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-   
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+    protected $table = 'pengelola';
+
+    // protected $fillable = [
+    //     'name',
+    //     'email',
+    //     'password',
+    // ];
 
     
     protected $hidden = [
@@ -29,4 +30,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getAuthPassword()
+    {
+     return $this->password_pengelola;
+    }
 }
