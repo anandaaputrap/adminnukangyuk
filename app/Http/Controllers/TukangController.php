@@ -13,7 +13,7 @@ class TukangController extends Controller
      */
     public function index()
     {
-        //
+        return view('tukang.home');
     }
 
     /**

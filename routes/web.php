@@ -2,7 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PelangganController;
+use App\Http\Controllers\PembayaranController;
+use App\Http\Controllers\PemesananController;
 use App\Http\Controllers\PengelolaController;
+use App\Http\Controllers\TukangController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,14 +22,20 @@ use App\Http\Controllers\PengelolaController;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Route::controller(PengelolaController::class)->group(function(){
-    Route::get('/', 'indexlogin')->name('login');
-    Route::post('login/proses', 'proses');
-    Route::get('logout', 'logout')->name('logout');
-});
+// Route::controller(PengelolaController::class)->group(function(){
+//     Route::get('/', 'indexlogin')->name('login');
+//     Route::post('login/proses', 'proses');
+//     Route::get('logout', 'logout')->name('logout');
+// });
 
-Route::group(['middleware' => ['auth']],function(){
-    Route::group(['middleware' => ['cekUserLogin:1']],function(){
-        Route::resource('home', PengelolaController::class);
-    });
-});
+// Route::group(['middleware' => ['auth']],function(){
+//     Route::group(['middleware' => ['cekUserLogin:1']],function(){
+//         Route::resource('home', PengelolaController::class);
+//     });
+// });
+
+Route::resource('home', PengelolaController::class);
+Route::resource('pelanggan', PelangganController::class);
+Route::resource('tukang', TukangController::class);
+Route::resource('pesan', PemesananController::class);
+Route::resource('bayar', PembayaranController::class);
