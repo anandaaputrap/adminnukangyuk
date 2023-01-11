@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pengelola;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,28 +13,28 @@ class LoginController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    // public function index()
-    // {
-    //     if ($user = Auth::user()) {
-    //         if($user->level == 1){
-    //             return redirect()->intended('home');
-    //         }
-    //     }
-    //     return view('login.login');
-    // }
+    public function index()
+    {
+        if ($user = Auth::user()) {
+            if($user->level == 1){
+                return redirect()->intended('home');
+            }
+        }
+        return view('login.login');
+    }
 
     // public function proses(Request $request)
     // {
     //     $request->validate([
-    //         'username' => 'required',
-    //         'password' => 'required',
+    //         'email_pengelola' => 'required|email',
+    //         'password_pengelola' => 'required',
     //     ],
     //     [
-    //         'username.required' => 'Username Tidak Boleh Kosong'
-    //     ]
-    // );
+    //         'email_pengelola.required' => 'Email Tidak Boleh Kosong',
+    //         'password_pengelola.required' => 'Password Tidak Boleh Kosong',
+    //     ]);
 
-    //     $credential = $request->only('username', 'password');
+    //     $credential = $request->only('email_pengelola', 'password_pengelola');
 
     //     if (Auth::attempt($credential)) {
     //         $request->session()->regenerate();
@@ -46,17 +47,49 @@ class LoginController extends Controller
     //     }
 
     //     return back()->withErrors([
-    //         'username' => 'Maaf Username Atau Password Anda Salah'
-    //     ])->onlyInput('username');
+    //         'email_pengelola' => 'Maaf Email Atau Password Anda Salah'
+    //     ])->onlyInput('email_pengelola');
+
     // }
 
-    // public function logout(Request $request)
-    // {
-    //     Auth::logout();
-    //     $request->session()->invalidate();
-    //     $request->session()->regenerateToken();
-    //     return redirect('/');
-    // }
+    public function proses(Request $request)
+    {
+        // dd($request->all());
+        $this->validate($request, [
+            "email_pengelola" => 'required|email',
+            "password_pengelola" => 'required|min:6',
+        ],[
+            'email_pengelola.required' =>  'Email Tidak Boleh Kosong',
+            'email_pengelola.email' => 'Alamat Email Tidak Valid',
+            'password_pengelola.required' => 'Password Tidak Boleh Kosong',
+            'password_pengelola.min' => 'Minimal Password 8 Karakter'
+        ]);
+
+        $credential = [
+            'email_pengelola' => $request->email_pengelola,
+            'password_pengelola' => $request->password_pengelola
+        ];
+        try {        
+            // dd(Auth::user());
+            Auth::attempt($credential);
+            if (Auth::user()) {
+                return redirect()->route('pengelola.home.index');
+            }
+            else {
+                // dd('gakenek');
+                return redirect()->back()->with('danger', 'Username / Password Salah !');
+            }
+        } catch (\Throwable $th) {
+            return dd($th);
+            return redirect()->back()->with('danger', $th);
+        }
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('/');
+    }
 
     /**
      * Show the form for creating a new resource.

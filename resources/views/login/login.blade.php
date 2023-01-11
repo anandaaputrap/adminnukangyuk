@@ -35,17 +35,27 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Selamat Datang</h1>
                                     </div>
-                                    <form class="user" action="{{ url('proses/login') }}" method="POST">
+                                    <form class="user" action="{{ route('postlogin') }}" method="POST">
                                         @csrf
+                                        @if (Session::has('error'))
+                                        <div class="alert alert-danger dark alert-dismissible fade show" role="alert" id="alert">
+                                            {{ session('error') }}
+                                        </div>
+                                        @endif
+                                        @if (Session::has('success'))
+                                        <div class="alert alert-primary dark alert-dismissible fade show" role="alert" id="alert">
+                                            {{ session('success') }}
+                                        </div>
+                                        @endif
                                         <div class="form-group">
                                             <input type="text" class="form-control form-control-user"
-                                                id="username" name="username"
-                                                @error('username')
+                                                id="email_pengelola" name="email_pengelola"
+                                                @error('email_pengelola')
                                                     is-invalid
                                                 @enderror
                                                  aria-describedby="emailHelp"
-                                                placeholder="Masukkan Username">
-                                            @error('username')
+                                                placeholder="Masukkan email">
+                                            @error('email_pengelola')
                                                 <div class="invalid-feedback">
                                                   {{ $message }}
                                                 </div>
@@ -56,8 +66,8 @@
                                             @error('password')
                                                 is-invalid
                                             @enderror
-                                                id="password" name="password" placeholder="Password">
-                                            @error('password')
+                                                id="password_pengelola" name="password_pengelola" placeholder="Tulis password">
+                                            @error('password_pengelola')
                                                 <div class="invalid-feedback">
                                                   {{ $message }}
                                                 </div>

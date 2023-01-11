@@ -22,20 +22,18 @@ use App\Http\Controllers\TukangController;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-// Route::controller(PengelolaController::class)->group(function(){
-//     Route::get('/', 'indexlogin')->name('login');
-//     Route::post('login/proses', 'proses');
-//     Route::get('logout', 'logout')->name('logout');
-// });
+Route::get('login', [LoginController::class, 'index']);
+Route::get('/', [LoginController::class, 'index']);
+Route::post('postlogin', [LoginController::class, 'proses'])->name('postlogin');
+Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
-// Route::group(['middleware' => ['auth']],function(){
-//     Route::group(['middleware' => ['cekUserLogin:1']],function(){
-//         Route::resource('home', PengelolaController::class);
-//     });
-// });
-
-Route::resource('home', PengelolaController::class);
-Route::resource('pelanggan', PelangganController::class);
-Route::resource('tukang', TukangController::class);
-Route::resource('pesan', PemesananController::class);
-Route::resource('bayar', PembayaranController::class);
+Route::group(['middleware' => 'level:1'], function () {
+    Route::prefix('pengelola')->name('pengelola.')->group(function () {
+        Route::resource('home', PengelolaController::class);
+        Route::resource('home', PengelolaController::class);
+        Route::resource('pelanggan', PelangganController::class);
+        Route::resource('tukang', TukangController::class);
+        Route::resource('pesan', PemesananController::class);
+        Route::resource('bayar', PembayaranController::class);
+    });
+});

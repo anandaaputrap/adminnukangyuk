@@ -5,7 +5,8 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-class CekUserLogin
+
+class Level
 {
     /**
      * Handle an incoming request.
@@ -24,6 +25,6 @@ class CekUserLogin
             return $next($request);
         }
             
-        return redirect('login')->with('error', 'Anda Tidak Memiliki Akses');
+        return redirect()->route('login')->with('error', 'Anda Tidak Memiliki Akses');
     }
 }
