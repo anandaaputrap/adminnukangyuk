@@ -17,19 +17,28 @@ class PelangganData extends Seeder
      */
     public function run()
     {
-        $tukang = [
+        $plg = [
             [
-                'nama_pelanggan' => 'Kusnaidi',
-                'telepon_pelanggan' => '08831466023',
-                'alamat_pelanggan' => 'Sidoarjo',
-                'username_pelanggan' => 'kusnaidi11',
+                'nama_pelanggan' => 'Slamet Rizki',
+                'telepon_pelanggan' => '08381466023',
+                'alamat_pelanggan' => 'Perak',
+                'username_pelanggan' => 'slametriz',
+                'password_pelanggan' => Hash::make('123456'),
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+            ],
+            [
+                'nama_pelanggan' => 'Michael',
+                'telepon_pelanggan' => '08387756023',
+                'alamat_pelanggan' => 'Rungkut',
+                'username_pelanggan' => 'mchzzz',
                 'password_pelanggan' => Hash::make('123456'),
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ],
         ];
 
-        foreach ($tukang as $key => $value) {
+        foreach ($plg as $key => $value) {
             Pelanggan::create($value);
         }
     }

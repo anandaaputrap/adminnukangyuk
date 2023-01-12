@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TukangController extends Controller
 {
@@ -13,7 +14,8 @@ class TukangController extends Controller
      */
     public function index()
     {
-        return view('tukang.home');
+        $data = DB::table('tukang')->get();
+        return view('tukang.home', compact('data'));
     }
 
     /**

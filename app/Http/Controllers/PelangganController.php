@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pelanggan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 // use DB;
@@ -81,6 +82,9 @@ class PelangganController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = Pelanggan::find($id);
+        $data->delete();
+
+        return back()->with('success', 'Data Berhasil Dihapus');
     }
 }

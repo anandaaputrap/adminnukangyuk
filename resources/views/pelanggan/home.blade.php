@@ -24,6 +24,7 @@
                         <th>Alamat Pelanggan</th>
                         <th>Username Pelanggan</th>
                         <th>Terdaftar Pada</th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tfoot>
@@ -34,6 +35,7 @@
                         <th>Alamat Pelanggan</th>
                         <th>Username Pelanggan</th>
                         <th>Terdaftar Pada</th>
+                        <th>Aksi</th>
                     </tr>
                 </tfoot>
                 <tbody>
@@ -45,6 +47,14 @@
                         <td>{{ $row->alamat_pelanggan }}</td>
                         <td>{{ $row->username_pelanggan }}</td>
                         <td>{{ $row->created_at }}</td>
+                        <td>
+                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalEdit">Edit</button> 
+                              <form action="{{ route('pengelola.pelanggan.destroy', $row->id) }}" method="POST">
+                                  @csrf
+                                  @method('delete')
+                                  <button class="btn btn-danger btn-sm">Hapus</button>
+                              </form>
+                          </td>
                     </tr>
                     @endforeach
                 </tbody>

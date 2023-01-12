@@ -18,41 +18,47 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Position</th>
-                        <th>Office</th>
-                        <th>Age</th>
-                        <th>Start date</th>
-                        <th>Salary</th>
+                        <th>No</th>
+                        <th>Nama Tukang</th>
+                        <th>Telepon Tukang</th>
+                        <th>Alamat Tukang</th>
+                        <th>Username Tukang</th>
+                        <th>Keahlian</th>
+                        <th>Tarif</th>
+                        <th>Norek</th>
+                        <th>Status</th>
+                        <th>Terdaftar Pada</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
-                        <th>Name</th>
-                        <th>Position</th>
-                        <th>Office</th>
-                        <th>Age</th>
-                        <th>Start date</th>
-                        <th>Salary</th>
+                        <th>No</th>
+                        <th>Nama Tukang</th>
+                        <th>Telepon Tukang</th>
+                        <th>Alamat Tukang</th>
+                        <th>Username Tukang</th>
+                        <th>Keahlian</th>
+                        <th>Tarif</th>
+                        <th>Norek</th>
+                        <th>Status</th>
+                        <th>Terdaftar Pada</th>
                     </tr>
                 </tfoot>
                 <tbody>
-                    <tr>
-                        <td>Michael Bruce</td>
-                        <td>Javascript Developer</td>
-                        <td>Singapore</td>
-                        <td>29</td>
-                        <td>2011/06/27</td>
-                        <td>$183,000</td>
-                    </tr>
-                    <tr>
-                        <td>Donna Snider</td>
-                        <td>Customer Support</td>
-                        <td>New York</td>
-                        <td>27</td>
-                        <td>2011/01/25</td>
-                        <td>$112,000</td>
-                    </tr>
+                    @foreach ($data as $key => $row)
+                        <tr>
+                            <td>{{ $key+1 }}</td>
+                            <td>{{ $row->nama_tukang }}</td>
+                            <td>{{ $row->telepon_tukang }}</td>
+                            <td>{{ $row->alamat_tukang }}</td>
+                            <td>{{ $row->username_tukang }}</td>
+                            <td>{{ $row->keahlian_tukang }}</td>
+                            <td>{{ $row->tarif_tukang }}</td>
+                            <td>{{ $row->norek_tukang }}</td>
+                            <td>{{ $row->status_tukang }}</td>
+                            <td>{{ $row->created_at }}</td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>
