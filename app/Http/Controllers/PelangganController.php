@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\DB;
+// use DB;
 class PelangganController extends Controller
 {
     /**
@@ -13,7 +14,8 @@ class PelangganController extends Controller
      */
     public function index()
     {
-        return view('pelanggan.home');
+        $data = DB::table('pelanggan')->get();
+        return view('pelanggan.home', compact('data'));
     }
 
     /**

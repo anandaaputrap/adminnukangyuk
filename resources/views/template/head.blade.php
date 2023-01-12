@@ -12,3 +12,10 @@
 
 <!-- Custom styles for this template-->
 <link href="{{ asset('sb/css/sb-admin-2.min.css') }}" rel="stylesheet">
+<link href="{{ asset('sb/vendor/datatables/dataTables.bootstrap4.min.css') }}" rel="stylesheet">
+<style>
+    .navbar .nav-link.active {
+      color: #b24693 !important;
+      font-weight: bold;
+    }    
+</style>
