@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pembayaran;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PembayaranController extends Controller
 {
@@ -13,7 +15,8 @@ class PembayaranController extends Controller
      */
     public function index()
     {
-        return view('pembayaran.home');
+        $data = DB::table('pembayaran')->get();
+        return view('pembayaran.home', compact('data'));
     }
 
     /**
@@ -79,6 +82,9 @@ class PembayaranController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = Pembayaran::find($id);
+        $data->delete();
+
+        return back()->with('success', 'Data Berhasil Dihapus');
     }
 }

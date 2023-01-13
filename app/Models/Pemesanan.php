@@ -16,11 +16,9 @@ class Pemesanan extends Model
     protected $fillable = [
         'tgl_mulai',
         'tgl_selesai',
-        'nama_pelanggan',
-        'nama_tukang',
+        'username_tukang',
         'keahlian_tukang',
         'id_pelanggan',
-        'id_tukang',
         'status_pesan',
         'created_at',
         'updated_at',

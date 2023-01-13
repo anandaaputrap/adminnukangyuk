@@ -48,8 +48,9 @@
                         <td>{{ $row->username_pelanggan }}</td>
                         <td>{{ $row->created_at }}</td>
                         <td>
-                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalEdit">Edit</button> 
-                              <form action="{{ route('pengelola.pelanggan.destroy', $row->id) }}" method="POST">
+                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#modalEdit">Edit</button>
+                            <br> 
+                              <form action="{{ route('pengelola.pelanggan.destroy', $row->id_pelanggan) }}" method="POST">
                                   @csrf
                                   @method('delete')
                                   <button class="btn btn-danger btn-sm">Hapus</button>
@@ -62,6 +63,40 @@
         </div>
     </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="modalEditLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalEditLabel">Edit Pelanggan</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="{{ route('pengelola.pelanggan.update', $row->id_pelanggan) }}" method="POST">
+                    @csrf
+                    @method('put')
+                    <div class="form-group">
+                        <label for="nama_pelanggan">Nama Pelanggan</label>
+                        <input type="text" class="form-control" id="nama_pelanggan" name="nama_pelanggan" value="{{ $row->nama_pelanggan }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="telepon_pelanggan">Telepon Pelanggan</label>
+                        <input type="text" class="form-control" id="telepon_pelanggan" name="telepon_pelanggan" value="{{ $row->telepon_pelanggan }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="alamat_pelanggan">Alamat Pelanggan</label>
+                        <input type="text" class="form-control" id="alamat_pelanggan" name="alamat_pelanggan" value="{{ $row->alamat_pelanggan }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="username_pelanggan">Username Pelanggan</label>
+                        <input type="text" class="form-control" id="username_pelanggan" name="username_pelanggan" value="{{ $row->username_pelanggan }}">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Simpan Data</button>
+                </form>
+            </div>
 
 @endsection
 

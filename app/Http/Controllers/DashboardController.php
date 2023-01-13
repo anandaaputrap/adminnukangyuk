@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pelanggan;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-// use DB;
-class PelangganController extends Controller
+
+class DashboardController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +13,7 @@ class PelangganController extends Controller
      */
     public function index()
     {
-        $data = DB::table('pelanggan')->get();
-        return view('pelanggan.home', compact('data'));
+        //
     }
 
     /**
@@ -71,23 +68,7 @@ class PelangganController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $pelanggan = Pelanggan::find($id);
-
-        if ($request->nama_pelanggan){
-            $pelanggan->nama_pelanggan = $request->nama_pelanggan;
-        }
-        if ($request->alamat){
-            $pelanggan->alamat = $request->alamat;
-        }
-        if ($request->no_telp){
-            $pelanggan->no_telp = $request->no_telp;
-        }
-        if ($request->username_pelanggan){
-            $pelanggan->username_pelanggan = $request->username_pelanggan;
-        }
-
-        $pelanggan->save();
-        return redirect()->route('pengelola.pelanggan.index')->with('success', 'Data Berhasil Diubah');
+        //
     }
 
     /**
@@ -98,9 +79,6 @@ class PelangganController extends Controller
      */
     public function destroy($id)
     {
-        $data = Pelanggan::find($id);
-        $data->delete();
-
-        return back()->with('success', 'Data Berhasil Dihapus');
+        //
     }
 }

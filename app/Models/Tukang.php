@@ -12,7 +12,7 @@ class Tukang extends Model
     use HasApiTokens, HasFactory, Notifiable;
     protected $table = "tukang";
     // protected $guarded = ['id'];
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'id_tukang';
     protected $fillable = [
         'nama_tukang',
         'telepon_tukang',

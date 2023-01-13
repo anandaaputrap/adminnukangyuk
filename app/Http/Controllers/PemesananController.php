@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pemesanan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PemesananController extends Controller
 {
@@ -13,7 +15,8 @@ class PemesananController extends Controller
      */
     public function index()
     {
-        return view('pemesanan.home');
+        $data = DB::table('pemesanan')->get();
+        return view('pemesanan.home', compact('data'));
     }
 
     /**
@@ -79,6 +82,9 @@ class PemesananController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = Pemesanan::find($id);
+        $data->delete();
+
+        return back()->with('success', 'Data Berhasil Dihapus');
     }
 }

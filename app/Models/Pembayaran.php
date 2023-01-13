@@ -14,11 +14,14 @@ class Pembayaran extends Model
     // protected $guarded = ['id'];
     protected $primaryKey = 'id';
     protected $fillable = [
-        'nama_pelanggan',
-        'telepon_pelanggan',
-        'alamat_pelanggan',
-        'username_pengelola',
-        'password_pengelola',
+        'username_tukang',
+        'keahlian_tukang',
+        'tgl_mulai',
+        'tgl_selesai',
+        'total',
+        'bukti_byr',
+        'status',
+        'id_pelanggan',
         'created_at',
         'updated_at',
     ];

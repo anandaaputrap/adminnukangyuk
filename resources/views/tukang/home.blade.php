@@ -28,6 +28,7 @@
                         <th>Norek</th>
                         <th>Status</th>
                         <th>Terdaftar Pada</th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tfoot>
@@ -42,6 +43,7 @@
                         <th>Norek</th>
                         <th>Status</th>
                         <th>Terdaftar Pada</th>
+                        <th>Aksi</th>
                     </tr>
                 </tfoot>
                 <tbody>
@@ -57,6 +59,15 @@
                             <td>{{ $row->norek_tukang }}</td>
                             <td>{{ $row->status_tukang }}</td>
                             <td>{{ $row->created_at }}</td>
+                            <td>
+                                <button type="button" class="btn btn-success open_modal" value="{{ $row->id_tukang }}">Edit</button> 
+                                {{-- <button type="button" class="btn btn-success open_modal" data-toggle="modal" data-target="#modalEdit">Edit</button>  --}}
+                                  <form action="{{ route('pengelola.tukang.destroy', $row->id_tukang) }}" method="POST">
+                                      @csrf
+                                      @method('delete')
+                                      <button class="btn btn-danger btn-sm">Hapus</button>
+                                  </form>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
@@ -65,9 +76,77 @@
     </div>
 </div>
 
+<!-- Modal -->
+<div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="modalEditLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalEditLabel">Edit Tukang</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="" method="POST">
+                    @csrf
+                    @method('put')
+                    <div class="form-group">
+                        <label for="nama_tukang">Nama Tukang</label>
+                        <input type="text" class="form-control" id="nama_tukang" name="nama_tukang">
+                    </div>
+                    <div class="form-group">
+                        <label for="telepon_tukang">Telepon Tukang</label>
+                        <input type="text" class="form-control" id="telepon_tukang" name="telepon_tukang" value="{{ $row->telepon_tukang }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="alamat_tukang">Alamat Tukang</label>
+                        <input type="text" class="form-control" id="alamat_tukang" name="alamat_tukang" value="{{ $row->alamat_tukang }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="username_tukang">Username Tukang</label>
+                        <input type="text" class="form-control" id="username_tukang" name="username_tukang" value="{{ $row->username_tukang }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="keahlian_tukang">Keahlian Tukang</label>
+                        <input type="text" class="form-control" id="keahlian_tukang" name="keahlian_tukang" value="{{ $row->keahlian_tukang }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="tarif_tukang">Tarif Tukang</label>
+                        <input type="text" class="form-control" id="tarif_tukang" name="tarif_tukang" value="{{ $row->tarif_tukang }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="norek_tukang">Norek Tukang</label>
+                        <input type="text" class="form-control" id="norek_tukang" name="norek_tukang" value="{{ $row->norek_tukang }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="status_tukang">Status</label>
+                        <select id="status_tukang" class="form-control" required>
+                            <option selected>-- Pilih --</option>
+                            <option value="aktif" {{ old('status_tukang',) }}>Aktif</option>
+                            <option value="tidak">Tidak Aktif</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="btn=save">Simpan</button>
+                </form>
+            </div>
+
 
 @endsection
 
 @push('js')
-        {{-- misal mau bikin javascript tambahan --}}
+    <script>
+       $(document).on('click','.open_modal',function(){
+        var url = "pengelola.tukang.show";
+        var id_tukang= $(this).val();
+        $.get(url + '/' + id_tukang, function (data) {
+            //success data
+            console.log(data);
+            $('#id_tukang').val(data.id);
+            $('#nama_tukang').val(data.nama_tukang);
+            $('#btn-save').val("update");
+            $('#modalEdit').modal('show');
+        }) 
+    });    
+    
+    </script>  {{-- misal mau bikin javascript tambahan --}}
 @endpush

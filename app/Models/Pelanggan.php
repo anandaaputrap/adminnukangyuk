@@ -12,7 +12,7 @@ class Pelanggan extends Model
     use HasApiTokens, HasFactory, Notifiable;
     protected $table = "pelanggan";
     // protected $guarded = ['id'];
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'id_pelanggan';
     protected $fillable = [
         'nama_pelanggan',
         'telepon_pelanggan',
