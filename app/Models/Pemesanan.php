@@ -12,7 +12,7 @@ class Pemesanan extends Model
     use HasApiTokens, HasFactory, Notifiable;
     protected $table = "pemesanan";
     // protected $guarded = ['id'];
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'id_pesan';
     protected $fillable = [
         'tgl_mulai',
         'tgl_selesai',

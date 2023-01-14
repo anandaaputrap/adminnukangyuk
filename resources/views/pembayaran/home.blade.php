@@ -45,21 +45,22 @@
                     </tr>
                 </tfoot>
                 <tbody>
-                    @foreach ($data as $key => $row)
+                    <?php $no = 1; ?>
+                    @foreach ($data as $key)
                         <tr>
-                            <td>{{ $key+1 }}</td>
-                            <td>{{ $row->username_tukang }}</td>
-                            <td>{{ $row->keahlian_tukang }}</td>
-                            <td>{{ $row->tgl_mulai }}</td>
-                            <td>{{ $row->tgl_selesai }}</td>
-                            <td>{{ $row->total }}</td>
-                            <td>{{ $row->bukti_byr }}</td>
-                            <td>{{ $row->status }}</td>
-                            <td>{{ $row->id_pelanggan }}</td>
+                            <td>{{ $no++ }}</td>
+                            <td>{{ $key->username_tukang }}</td>
+                            <td>{{ $key->keahlian_tukang }}</td>
+                            <td>{{ $key->tgl_mulai }}</td>
+                            <td>{{ $key->tgl_selesai }}</td>
+                            <td>{{ $key->total }}</td>
+                            <td>{{ $key->bukti_byr }}</td>
+                            <td>{{ $key->status }}</td>
+                            <td>{{ $key->id_pelanggan }}</td>
                             <td>
-                                <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalEdit">Edit</button>
+                                <a href="{{ route('pengelola.bayar.edit', $key->id_pembayaran) }}" class="btn btn-success btn-sm">Edit</a>
                                 <br>
-                                <form action="{{ route('pengelola.bayar.destroy', $row->id_pembayaran) }}" method="post" style="display: inline-block">
+                                <form action="{{ route('pengelola.bayar.destroy', $key->id_pembayaran) }}" method="post" style="display: inline-block">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger btn-sm">Delete</button>

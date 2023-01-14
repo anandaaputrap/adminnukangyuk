@@ -39,23 +39,25 @@
                     </tr>
                 </tfoot>
                 <tbody>
-                    @foreach ($data as $key => $row)
+                    <?php $no = 1; ?>
+                    @foreach ($data as $key)
                     <tr>
-                        <td>{{ $key+1 }}</td>
-                        <td>{{ $row->nama_pelanggan }}</td>
-                        <td>{{ $row->telepon_pelanggan }}</td>
-                        <td>{{ $row->alamat_pelanggan }}</td>
-                        <td>{{ $row->username_pelanggan }}</td>
-                        <td>{{ $row->created_at }}</td>
+                        <td>{{ $no++ }}</td>
+                        <td>{{ $key->nama_pelanggan }}</td>
+                        <td>{{ $key->telepon_pelanggan }}</td>
+                        <td>{{ $key->alamat_pelanggan }}</td>
+                        <td>{{ $key->username_pelanggan }}</td>
+                        <td>{{ $key->created_at }}</td>
                         <td>
-                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#modalEdit">Edit</button>
+                            <a href="{{ route('pengelola.pelanggan.edit', $key->id_pelanggan) }}" class="btn btn-success btn-sm">Edit</a>
+                            {{-- <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#modalEdit">Edit</button> --}}
                             <br> 
-                              <form action="{{ route('pengelola.pelanggan.destroy', $row->id_pelanggan) }}" method="POST">
+                              <form action="{{ route('pengelola.pelanggan.destroy', $key->id_pelanggan) }}" method="POST">
                                   @csrf
                                   @method('delete')
                                   <button class="btn btn-danger btn-sm">Hapus</button>
                               </form>
-                          </td>
+                        </td>
                     </tr>
                     @endforeach
                 </tbody>
@@ -65,7 +67,7 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="modalEditLabel" aria-hidden="true">
+{{-- <div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="modalEditLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -99,7 +101,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 
 @endsection
 

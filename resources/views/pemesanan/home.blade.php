@@ -41,18 +41,20 @@
                     </tr>
                 </tfoot>
                 <tbody>
-                    @foreach ($data as $key => $row)
+                    <?php $no = 1; ?>
+                    @foreach ($data as $key)
                     <tr>
-                        <td>{{ $key+1 }}</td>
-                        <td>{{ $row->tgl_mulai }}</td>
-                        <td>{{ $row->tgl_selesai }}</td>
-                        <td>{{ $row->username_tukang }}</td>
-                        <td>{{ $row->keahlian_tukang }}</td>
-                        <td>{{ $row->id_pelanggan }}</td>
-                        <td>{{ $row->status_pesan }}</td>
+                        <td>{{ $no++ }}</td>
+                        <td>{{ $key->tgl_mulai }}</td>
+                        <td>{{ $key->tgl_selesai }}</td>
+                        <td>{{ $key->username_tukang }}</td>
+                        <td>{{ $key->keahlian_tukang }}</td>
+                        <td>{{ $key->id_pelanggan }}</td>
+                        <td>{{ $key->status_pesan }}</td>
                         <td>
-                            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalEdit">Edit</button>
-                            <form action="{{ route('pengelola.pesan.destroy', $row->id_pesan) }}" method="post" style="display: inline-block">
+                            <a href="{{ route('pengelola.pesan.edit', $key->id_pesan) }}" class="btn btn-success btn-sm">Edit</a>
+                            {{-- <button type="button" class="btn btn-success" data-toggle="modal" data-target="#modalEdit">Edit</button> --}}
+                            <form action="{{ route('pengelola.pesan.destroy', $key->id_pesan) }}" method="post" style="display: inline-block">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger btn-sm">Delete</button>
@@ -67,27 +69,6 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="modalEditLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalEditLabel">Edit Data Pemesanan</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form action="{{ route('pengelola.pesan.update', $row->id_pesan) }}" method="post">
-                    @csrf
-                    @method('PUT')
-                    <div class="form-group">
-                        <label for="tgl_mulai">Tanggal Mulai</label>
-                        <input type="date" class="form-control" id="tgl_mulai" name="tgl_mulai" value="{{ $row->tgl_mulai }}">
-                    </div>
-                    <div class="form-group">
-                        <label for="tgl_selesai">Tanggal Selesai</label>
-                        <input type="date" class="form-control" id="tgl_selesai" name="tgl_selesai" value="{{ $row->tgl_selesai }}">
-                    </div>
 @endsection
 
 @push('js')

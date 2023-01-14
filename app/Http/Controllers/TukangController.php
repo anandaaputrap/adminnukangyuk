@@ -60,7 +60,9 @@ class TukangController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('tukang.edit')->with([
+            'tukang' => Tukang::find($id),
+        ]);
     }
 
     /**

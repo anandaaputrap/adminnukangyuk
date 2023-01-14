@@ -59,7 +59,9 @@ class PelangganController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('pelanggan.edit')->with([
+            'pelanggan' => Pelanggan::find($id),
+        ]);
     }
 
     /**

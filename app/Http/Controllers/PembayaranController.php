@@ -59,7 +59,9 @@ class PembayaranController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('pembayaran.edit')->with([
+            'pembayaran' => Pembayaran::find($id),
+        ]);
     }
 
     /**
@@ -71,7 +73,9 @@ class PembayaranController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $pembayaran = Pembayaran::find($id);
+        $pembayaran->update($request->all());
+        return redirect()->route('pengelola.bayar.index')->with('success', 'Data Berhasil Diubah');
     }
 
     /**

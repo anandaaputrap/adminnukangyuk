@@ -12,7 +12,7 @@ class Pembayaran extends Model
     use HasApiTokens, HasFactory, Notifiable;
     protected $table = "pembayaran";
     // protected $guarded = ['id'];
-    protected $primaryKey = 'id';
+    protected $primaryKey = 'id_pembayaran';
     protected $fillable = [
         'username_tukang',
         'keahlian_tukang',

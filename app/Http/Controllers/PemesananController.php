@@ -59,7 +59,9 @@ class PemesananController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('pemesanan.edit')->with([
+            'pemesanan' => Pemesanan::find($id),
+        ]); 
     }
 
     /**
@@ -71,9 +73,9 @@ class PemesananController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $pesan = Pemesanan::find($id);
-        $pesan->update($request->all());
-        return redirect()->route('pengelola.pelanggan.index')->with('success', 'Data Berhasil Diubah');
+        $pemesanan = Pemesanan::find($id);
+        $pemesanan->update($request->all());
+        return redirect()->route('pengelola.pesan.index')->with('success', 'Data Berhasil Diubah');
     }
 
     /**
