@@ -17,8 +17,8 @@ class Pelanggan extends Model
         'nama_pelanggan',
         'telepon_pelanggan',
         'alamat_pelanggan',
-        'username_pengelola',
-        'password_pengelola',
+        'username_pelanggan',
+        'password_pelanggan',
         'created_at',
         'updated_at',
     ];

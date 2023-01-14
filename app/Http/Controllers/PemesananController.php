@@ -71,7 +71,9 @@ class PemesananController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $pesan = Pemesanan::find($id);
+        $pesan->update($request->all());
+        return redirect()->route('pengelola.pelanggan.index')->with('success', 'Data Berhasil Diubah');
     }
 
     /**

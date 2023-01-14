@@ -48,8 +48,8 @@ class TukangController extends Controller
      */
     public function show($request)
     {
-        $data = Tukang::findOrFail($request->get('id'));
-        echo json_encode($data);
+        // $data = Tukang::findOrFail($request->get('id'));
+        // echo json_encode($data);
     }
 
     /**
@@ -74,32 +74,7 @@ class TukangController extends Controller
     {
         $tukang = Tukang::find($id);
 
-        if ($request->nama_tukang) {
-            $tukang->nama_tukang = $request->nama_tukang;
-        }
-        if ($request->telepon_tukang) {
-            $tukang->telepon_tukang = $request->telepon_tukang;
-        }
-        if ($request->alamat_tukang) {
-            $tukang->alamat_tukang = $request->alamat_tukang;
-        }
-        if ($request->username_tukang) {
-            $tukang->username_tukang = $request->username_tukang;
-        }
-        if ($request->keahlian_tukang) {
-            $tukang->keahlian_tukang = $request->keahlian_tukang;
-        }
-        if ($request->tarif_tukang) {
-            $tukang->tarif_tukang = $request->tarif_tukang;
-        }
-        if ($request->norek_tukang) {
-            $tukang->norek_tukang = $request->norek_tukang;
-        }
-        if ($request->status_tukang) {
-            $tukang->status_tukang = $request->status_tukang;
-        }
-
-        $tukang->save();
+        $tukang->update($request->all());
         return redirect()->route('pengelola.tukang.index')->with('success', 'Data Berhasil Diubah');
     }
 

@@ -47,9 +47,10 @@
                     </tr>
                 </tfoot>
                 <tbody>
+                    <?php $no = 1; ?>
                     @foreach ($data as $key => $row)
                         <tr>
-                            <td>{{ $key+1 }}</td>
+                            <td>{{ $no++ }}</td>
                             <td>{{ $row->nama_tukang }}</td>
                             <td>{{ $row->telepon_tukang }}</td>
                             <td>{{ $row->alamat_tukang }}</td>
@@ -60,8 +61,8 @@
                             <td>{{ $row->status_tukang }}</td>
                             <td>{{ $row->created_at }}</td>
                             <td>
-                                <button type="button" class="btn btn-success open_modal" value="{{ $row->id_tukang }}">Edit</button> 
-                                {{-- <button type="button" class="btn btn-success open_modal" data-toggle="modal" data-target="#modalEdit">Edit</button>  --}}
+                                {{-- <button type="button" class="btn btn-success open_modal" value="{{ $row->id_tukang }}">Edit</button>  --}}
+                                <button type="button" class="btn btn-success open_modal" data-toggle="modal" data-target="#modalEdit">Edit</button> 
                                   <form action="{{ route('pengelola.tukang.destroy', $row->id_tukang) }}" method="POST">
                                       @csrf
                                       @method('delete')
@@ -87,12 +88,12 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="" method="POST">
+                <form action="{{ route('pengelola.tukang.update', $row->id_tukang) }}" method="POST">
                     @csrf
                     @method('put')
                     <div class="form-group">
                         <label for="nama_tukang">Nama Tukang</label>
-                        <input type="text" class="form-control" id="nama_tukang" name="nama_tukang">
+                        <input type="text" class="form-control" id="nama_tukang" name="nama_tukang" value="{{ $row->nama_tukang }}">
                     </div>
                     <div class="form-group">
                         <label for="telepon_tukang">Telepon Tukang</label>
@@ -120,21 +121,24 @@
                     </div>
                     <div class="form-group">
                         <label for="status_tukang">Status</label>
-                        <select id="status_tukang" class="form-control" required>
+                        <select name="status_tukang" id="status_tukang" class="form-control" required>
                             <option selected>-- Pilih --</option>
-                            <option value="aktif" {{ old('status_tukang',) }}>Aktif</option>
-                            <option value="tidak">Tidak Aktif</option>
+                            <option value="Aktif" @if($row->status_tukang == "Aktif") selected @endif>Aktif</option>
+                            <option value="Nonaktif" @if($row->status_tukang == "Nonaktif") selected @endif>Nonaktif</option>
                         </select>
                     </div>
                     <button type="submit" class="btn btn-primary" id="btn=save">Simpan</button>
                 </form>
             </div>
+        </div>
+    </div>
+</div>
 
 
 @endsection
 
 @push('js')
-    <script>
+    {{-- <script>
        $(document).on('click','.open_modal',function(){
         var url = "pengelola.tukang.show";
         var id_tukang= $(this).val();
@@ -148,5 +152,5 @@
         }) 
     });    
     
-    </script>  {{-- misal mau bikin javascript tambahan --}}
+    </script>  misal mau bikin javascript tambahan --}}
 @endpush

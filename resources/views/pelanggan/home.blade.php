@@ -97,9 +97,19 @@
                     <button type="submit" class="btn btn-primary">Simpan Data</button>
                 </form>
             </div>
+        </div>
+    </div>
+</div>
 
 @endsection
 
 @push('js')
-        {{-- misal mau bikin javascript tambahan --}}
+    {{-- <script>
+        $(document).on('click', '.open-modal', function() {
+        var id_pelanggan = $(this).data('id_pelanggan');
+        var nama_pelanggan = $(this).data('nama_pelanggan');
+        $('#myModal #id_pelanggan').val(id_pelanggan);
+        $('#myModal #name_pelanggan').val(nama_pelanggan);
+        });
+    </script>   misal mau bikin javascript tambahan --}}
 @endpush
