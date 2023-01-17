@@ -23,34 +23,6 @@ class LoginController extends Controller
         return view('login.login');
     }
 
-    // public function proses(Request $request)
-    // {
-    //     $request->validate([
-    //         'email_pengelola' => 'required|email',
-    //         'password_pengelola' => 'required',
-    //     ],
-    //     [
-    //         'email_pengelola.required' => 'Email Tidak Boleh Kosong',
-    //         'password_pengelola.required' => 'Password Tidak Boleh Kosong',
-    //     ]);
-
-    //     $credential = $request->only('email_pengelola', 'password_pengelola');
-
-    //     if (Auth::attempt($credential)) {
-    //         $request->session()->regenerate();
-    //         $user = Auth::user();
-    //         if($user->level == 1){
-    //             return redirect()->intended('home');
-    //         }
-
-    //         return redirect()->intended('/');
-    //     }
-
-    //     return back()->withErrors([
-    //         'email_pengelola' => 'Maaf Email Atau Password Anda Salah'
-    //     ])->onlyInput('email_pengelola');
-
-    // }
 
     public function proses(Request $request)
     {
