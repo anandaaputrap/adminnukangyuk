@@ -61,7 +61,7 @@
                             <td>{{ $key->status_tukang }}</td>
                             <td>{{ $key->created_at }}</td>
                             <td>
-                                <a href="{{ route('pengelola.tukang.edit', $key->id_tukang) }}" class="btn btn-success btn-sm">Edit</a>
+                                <a href="{{ route('pengelola.tukang.edit', $key->id_tukang) }}" class="btn btn-success btn-sm">Detail</a>
                                 {{-- <button type="button" class="btn btn-success open_modal" value="{{ $row->id_tukang }}">Edit</button>  --}}
                                 {{-- <button type="button" class="btn btn-success open_modal" data-toggle="modal" data-target="#modalEdit">Edit</button>  --}}
                                   <form action="{{ route('pengelola.tukang.destroy', $key->id_tukang) }}" method="POST">

@@ -49,7 +49,7 @@
                         <td>{{ $key->username_pelanggan }}</td>
                         <td>{{ $key->created_at }}</td>
                         <td>
-                            <a href="{{ route('pengelola.pelanggan.edit', $key->id_pelanggan) }}" class="btn btn-success btn-sm">Edit</a>
+                            <a href="{{ route('pengelola.pelanggan.edit', $key->id_pelanggan) }}" class="btn btn-success btn-sm">Detail</a>
                             {{-- <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#modalEdit">Edit</button> --}}
                             <br> 
                               <form action="{{ route('pengelola.pelanggan.destroy', $key->id_pelanggan) }}" method="POST">

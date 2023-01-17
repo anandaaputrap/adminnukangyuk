@@ -54,7 +54,7 @@
                             <td>{{ $key->tgl_mulai }}</td>
                             <td>{{ $key->tgl_selesai }}</td>
                             <td>{{ $key->total }}</td>
-                            <td>{{ $key->bukti_byr }}</td>
+                            <td><img src="{{ asset('storage/'.$key->bukti_byr) }}" alt="" width="100px"></td>
                             <td>{{ $key->status }}</td>
                             <td>{{ $key->id_pelanggan }}</td>
                             <td>

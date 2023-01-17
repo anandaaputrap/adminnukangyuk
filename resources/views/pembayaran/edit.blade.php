@@ -34,7 +34,7 @@
     </div>
     <div class="form-group">
         <label for="bukti_byr">Bukti Bayar</label>
-        <input type="text" class="form-control" id="bukti_byr" name="bukti_byr" readonly value="{{ $pembayaran->bukti_byr }}">
+        <img src="{{ asset('storage/'.$pembayaran->bukti_byr) }}" alt="" width="100px">
     </div>
     <div class="form-group">
         <label for="status">Status</label>

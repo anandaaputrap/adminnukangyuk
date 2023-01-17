@@ -36,6 +36,7 @@
         <label for="status_pesan">Status Pesan</label>
         <select name="status_pesan" id="status_pesan" class="form-control" required>
             <option selected>-- Pilih --</option>
+            <option value="Selesai" @if($pemesanan->status_pesan == "Selesai") selected @endif>Selesai</option>
             <option value="Terkonfirmasi" @if($pemesanan->status_pesan == "Terkonfirmasi") selected @endif>Terkonfirmasi</option>
             <option value="Belum Terkonfirmasi" @if($pemesanan->status_pesan == "Belum Terkonfirmasi") selected @endif>Belum Terkonfirmasi</option>
         </select>
