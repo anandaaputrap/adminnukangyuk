@@ -9,7 +9,7 @@
     <h1 class="h3 mb-0 text-gray-800">Pembayaran</h1>
 </div>
 
-{{-- <div class="d-sm-flex align-items-center justify-content-center mb-4">
+<div class="d-sm-flex align-items-center justify-content-center mb-4">
     <div class="card">
         <div class="card-body">
             <form action="" method="get">
@@ -61,7 +61,7 @@
             </div>
         </form>
     </div>
-</div> --}}
+</div>
 
 <div class="card shadow mb-4">
     <div class="card-header py-3">
@@ -101,6 +101,7 @@
                 <tbody>
                     <?php $no = 1; ?>
                     @foreach ($data as $key)
+                    @foreach ($bayar as $key)
                         <tr>
                             <td>{{ $no++ }}</td>
                             <td>{{ $key->username_tukang }}</td>
@@ -121,6 +122,7 @@
                                 </form>
                             </td>
                         </tr>
+                    @endforeach                
                     @endforeach
                 </tbody>
             </table>

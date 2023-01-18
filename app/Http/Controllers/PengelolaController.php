@@ -19,6 +19,7 @@ class PengelolaController extends Controller
             'tukang' => Tukang::get(),
             'pesan' => Pemesanan::get(),
             'bayar' => Pembayaran::get(),
+            
         ]);
     }
 
