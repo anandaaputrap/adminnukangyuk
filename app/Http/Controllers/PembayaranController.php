@@ -15,44 +15,18 @@ class PembayaranController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     public function seacrhData($request, $data)
-     {
-         if ($request->ahli != "") {
-             $data = $data->where('keahlian_tukang', $request->ahli);
-         }
- 
-         if ($request->pelanggan != "") {
-             $data = $data->whereHas('pelanggan', function (Builder $query) use($request){
-                 $query->where('nama_pelanggan','LIKE','%'. $request->pelanggan.'%');
-             });
-         }
- 
-         if ($request->total != "") {
-             $data = $data->where('total','LIKE','%'.$request->total.'%');
-         }
- 
-         if ($request->status != "") {
-             $data = $data->where('status','LIKE','%'.$request->status.'%');
-         }
- 
-         if ($request->awal || $request->akhir != "") {
-             $data = $data->where('tgl_mulai', ">=", $request->awal)->where('tgl_selesai', "<=", $request->end_date);
-         }
- 
-         return $data;
-     }
     public function index(Request $request)
     {
-        // $data = Pembayaran::with('pelanggan');
-        // if ($request->all() != null) {          
-        //     // dd($request->all());
-        //     $data = $this->seacrhData($request,$data);
-        // }
-        // $data->get();
-        // dd($data);
 
-        
-        $data = DB::table('pembayaran')->get();
+        if ($request->all() != null) {
+            $data = Pembayaran::with('pelanggan');
+            // dd($request->all());
+            $data = $this->seacrhData($request,$data);
+            $data->get();
+        }else{
+            $data = Pembayaran::with('pelanggan')->get();
+        }
+        // dd($data);
         return view('pembayaran.home', compact('data'));
     }
 
