@@ -22,4 +22,9 @@ class Pelanggan extends Model
         'created_at',
         'updated_at',
     ];
+
+    public function pembayaran()
+    {
+       return $this->hasMany(Pembayaran::class, 'id_pelanggan', 'id_pelanggan');
+    }
 }
