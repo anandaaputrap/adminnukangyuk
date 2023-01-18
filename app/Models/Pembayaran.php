@@ -9,9 +9,9 @@ use Laravel\Sanctum\HasApiTokens;
 
 class Pembayaran extends Model
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasFactory;
     protected $table = "pembayaran";
-    // protected $guarded = ['id'];
+    protected $guarded = ['id_pembayaran'];
     protected $primaryKey = 'id_pembayaran';
     protected $dates = ['tgl_mulai','tgl_selesai'];
     

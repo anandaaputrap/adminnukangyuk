@@ -9,9 +9,9 @@ use Laravel\Sanctum\HasApiTokens;
 
 class Pelanggan extends Model
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasFactory;
     protected $table = "pelanggan";
-    // protected $guarded = ['id'];
+    protected $guarded = ['id_pelanggan'];
     protected $primaryKey = 'id_pelanggan';
     protected $fillable = [
         'nama_pelanggan',
