@@ -100,7 +100,7 @@
                 </tfoot>
                 <tbody>
                     <?php $no = 1; ?>
-                    @foreach ($bayar as $key)
+                    @foreach ($data as $key)
                         <tr>
                             <td>{{ $no++ }}</td>
                             <td>{{ $key->username_tukang }}</td>
