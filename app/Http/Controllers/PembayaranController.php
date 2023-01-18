@@ -43,16 +43,16 @@ class PembayaranController extends Controller
      }
     public function index(Request $request)
     {
-
-        if ($request->all() != null) {
-            $data = Pembayaran::with('pelanggan');
-            // dd($request->all());
-            $data = $this->seacrhData($request,$data);
-            $data->get();
-        }else{
-            $data = Pembayaran::with('pelanggan')->get();
-        }
+        // $data = Pembayaran::with('pelanggan');
+        // if ($request->all() != null) {          
+        //     // dd($request->all());
+        //     $data = $this->seacrhData($request,$data);
+        // }
+        // $data->get();
         // dd($data);
+
+        
+        $data = DB::table('pembayaran')->get();
         return view('pembayaran.home', compact('data'));
     }
 

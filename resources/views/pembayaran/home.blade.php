@@ -9,7 +9,7 @@
     <h1 class="h3 mb-0 text-gray-800">Pembayaran</h1>
 </div>
 
-<div class="d-sm-flex align-items-center justify-content-center mb-4">
+{{-- <div class="d-sm-flex align-items-center justify-content-center mb-4">
     <div class="card">
         <div class="card-body">
             <form action="" method="get">
@@ -61,7 +61,7 @@
             </div>
         </form>
     </div>
-</div>
+</div> --}}
 
 <div class="card shadow mb-4">
     <div class="card-header py-3">
@@ -80,7 +80,7 @@
                         <th>Total</th>
                         <th>Bukti Bayar</th>
                         <th>Status</th>
-                        <th>ID Pelanggan</th>
+                        <th>Nama Pelanggan</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -94,7 +94,7 @@
                         <th>Total</th>
                         <th>Bukti Bayar</th>
                         <th>Status</th>
-                        <th>ID Pelanggan</th>
+                        <th>Nama Pelanggan</th>
                         <th>Aksi</th>
                     </tr>
                 </tfoot>
@@ -105,8 +105,8 @@
                             <td>{{ $no++ }}</td>
                             <td>{{ $key->username_tukang }}</td>
                             <td>{{ $key->keahlian_tukang }}</td>
-                            <td>{{ $key->tgl_mulai->format('d F Y') }}</td>
-                            <td>{{ $key->tgl_selesai->format('d F Y') }}</td>
+                            <td>{{ $key->tgl_mulai }}</td>
+                            <td>{{ $key->tgl_selesai }}</td>
                             <td>{{ $key->total }}</td>
                             <td><img src="{{ asset('storage/'.$key->bukti_byr) }}" alt="" width="100px"></td>
                             <td>{{ $key->status }}</td>
