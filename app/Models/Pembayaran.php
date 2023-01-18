@@ -13,6 +13,8 @@ class Pembayaran extends Model
     protected $table = "pembayaran";
     // protected $guarded = ['id'];
     protected $primaryKey = 'id_pembayaran';
+    protected $dates = ['tgl_mulai','tgl_selesai'];
+    
     protected $fillable = [
         'username_tukang',
         'keahlian_tukang',
@@ -25,4 +27,9 @@ class Pembayaran extends Model
         'created_at',
         'updated_at',
     ];
+
+    public function pelanggan()
+    {
+       return $this->belongsTo(Pelanggan::class, 'id_pelanggan', 'id_pelanggan');
+    }
 }
