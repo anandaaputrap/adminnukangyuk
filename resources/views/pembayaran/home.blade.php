@@ -16,44 +16,44 @@
                 <div class="row">
                     <div class="col-lg-6 col-sm-6">
                         <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Keahlian<i
+                            <label for="keahlian_tukang" class="form-label">Keahlian Tukang<i
                                     class="text-danger"></i></label>
-                            <input type="text" name="ahli" class="form-control" id="ahli">
+                            <input type="text" name="keahlian_tukang" class="form-control" id="keahlian_tukang">
                         </div>
                     </div>
                     <div class="col-lg-6 col-sm-6">
                         <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Total <i
+                            <label for="total" class="form-label">Total<i
                                     class="text-danger"></i></label>
                             <input type="text" name="total" class="form-control" id="total">
                         </div>
                     </div>
                     <div class="col-lg-6 col-sm-6">
                         <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Status <i
+                            <label for="status" class="form-label">Status <i
                                     class="text-danger"></i></label>
                             <input type="text" name="status" class="form-control" id="status">
                         </div>
                     </div>
                     <div class="col-lg-6 col-sm-6">
                         <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Pelanggan<i
+                            <label for="nama_pelanggan" class="form-label">Nama Pelanggan<i
                                     class="text-danger"></i></label>
-                            <input type="text" name="pelanggan" class="form-control" id="pelanggan">
+                            <input type="text" name="nama_pelanggan" class="form-control" id="nama_pelanggan">
                         </div>
                     </div>
                     <div class="col-lg-6 col-sm-6">
                         <div class="mb-3">
-                            <label for="awal" class="form-label">Tanggal Awal<i
+                            <label for="tgl_mulai" class="form-label">Tanggal Awal<i
                                     class="text-danger"></i></label>
-                            <input type="date" name="awal" class="form-control" id="awal">
+                            <input type="date" name="tgl_mulai" class="form-control" id="tgl_mulai">
                         </div>
                     </div>
                     <div class="col-lg-6 col-sm-6">
                         <div class="mb-3">
-                            <label for="akhir" class="form-label">Tanggal Akhir<i
+                            <label for="tgl_selesai" class="form-label">Tanggal Akhir<i
                                     class="text-danger"></i></label>
-                            <input type="date" name="akhir" class="form-control" id="akhir">
+                            <input type="date" name="tgl_selesai" class="form-control" id="tgl_selesai">
                         </div>
                     </div>
                 </div>

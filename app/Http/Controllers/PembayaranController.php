@@ -64,8 +64,8 @@ class PembayaranController extends Controller
         if ($request->all() != null) {
             // dd($request->all());
             // $bayar = $this->seacrhData($request,$bayar);
-            if ($request->ahli != "") {
-                $bayar = Pembayaran::where('keahlian_tukang', $request->ahli)->get();
+            if ($request->keahlian_tukang != "") {
+                $bayar = Pembayaran::where('keahlian_tukang', $request->keahlian_tukang)->get();
             }
             if ($request->total != "") {
                 $bayar =  Pembayaran::where('total','LIKE','%'.$request->total.'%')->get();
@@ -74,13 +74,13 @@ class PembayaranController extends Controller
                 $bayar =  Pembayaran::where('status','LIKE','%'.$request->status.'%')->get();
             }
 
-            if ($request->pelanggan != "") {
+            if ($request->nama_pelanggan != "") {
                 $bayar = Pembayaran::whereHas('pelanggan', function (Builder $query) use($request){
-                    $query->where('nama_pelanggan','LIKE','%'. $request->pelanggan.'%');
+                    $query->where('nama_pelanggan','LIKE','%'. $request->nama_pelanggan.'%');
                 })->get();
             }
-            if ($request->awal && $request->akhir != "") {
-                $bayar = Pembayaran::where('tgl_mulai', ">=", $request->awal)->where('tgl_selesai', "<=", $request->akhir)->get();
+            if ($request->tgl_mulai || $request->tgl_selesai != "") {
+                $bayar = Pembayaran::where('tgl_mulai', ">=", $request->tgl_mulai)->where('tgl_selesai', "<=", $request->tgl_selesai)->get();
             }
         }
         return view('pembayaran.home', compact('bayar'));
