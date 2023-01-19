@@ -15,32 +15,32 @@ class PembayaranController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     public function seacrhData($request, $data)
-     {
-         if ($request->ahli != "") {
-             $data = $data->where('keahlian_tukang', $request->ahli);
-         }
+    //  public function seacrhData($request, $data)
+    //  {
+    //      if ($request->ahli != "") {
+    //          $data = $data->where('keahlian_tukang', $request->ahli);
+    //      }
 
-         if ($request->pelanggan != "") {
-             $data = $data->whereHas('pelanggan', function (Builder $query) use($request){
-                 $query->where('nama_pelanggan','LIKE','%'. $request->pelanggan.'%');
-             });
-         }
+    //      if ($request->pelanggan != "") {
+    //          $data = $data->whereHas('pelanggan', function (Builder $query) use($request){
+    //              $query->where('nama_pelanggan','LIKE','%'. $request->pelanggan.'%');
+    //          });
+    //      }
 
-         if ($request->total != "") {
-             $data = $data->where('total','LIKE','%'.$request->total.'%');
-         }
+    //      if ($request->total != "") {
+    //          $data = $data->where('total','LIKE','%'.$request->total.'%');
+    //      }
 
-         if ($request->status != "") {
-             $data = $data->where('status','LIKE','%'.$request->status.'%');
-         }
+    //      if ($request->status != "") {
+    //          $data = $data->where('status','LIKE','%'.$request->status.'%');
+    //      }
 
-         if ($request->awal || $request->akhir != "") {
-             $data = $data->where('tgl_mulai', ">=", $request->awal)->where('tgl_selesai', "<=", $request->end_date);
-         }
+    //      if ($request->awal && $request->akhir != "") {
+    //          $data = $data->where('tgl_mulai', ">=", $request->awal)->where('tgl_selesai', "<=", $request->akhir);
+    //      }
 
-         return $data;
-    }
+    //      return $data;
+    // }
     // public function index(Request $request)
     // {
 
@@ -62,27 +62,27 @@ class PembayaranController extends Controller
         $bayar = [];
         $bayar = Pembayaran::all();
         if ($request->all() != null) {
-            $data = Pembayaran::with('pelanggan');
             // dd($request->all());
-            $data = $this->seacrhData($request,$data);
-            $data->get();
-        }else{
-            $data = Pembayaran::with('pelanggan')->get();
             // $bayar = $this->seacrhData($request,$bayar);
             if ($request->ahli != "") {
                 $bayar = Pembayaran::where('keahlian_tukang', $request->ahli)->get();
             }
-
             if ($request->total != "") {
                 $bayar =  Pembayaran::where('total','LIKE','%'.$request->total.'%')->get();
             }
-
             if ($request->status != "") {
                 $bayar =  Pembayaran::where('status','LIKE','%'.$request->status.'%')->get();
             }
+
+            if ($request->pelanggan != "") {
+                $bayar = Pembayaran::whereHas('pelanggan', function (Builder $query) use($request){
+                    $query->where('nama_pelanggan','LIKE','%'. $request->pelanggan.'%');
+                })->get();
+            }
+            if ($request->awal && $request->akhir != "") {
+                $bayar = Pembayaran::where('tgl_mulai', ">=", $request->awal)->where('tgl_selesai', "<=", $request->akhir)->get();
+            }
         }
-        // dd($data);
-        return view('pembayaran.home', compact('data'));
         return view('pembayaran.home', compact('bayar'));
     }
     public function create()
@@ -90,23 +90,12 @@ class PembayaranController extends Controller
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         //

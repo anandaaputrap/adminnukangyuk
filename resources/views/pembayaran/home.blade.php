@@ -16,7 +16,7 @@
                 <div class="row">
                     <div class="col-lg-6 col-sm-6">
                         <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Keahlian <i
+                            <label for="exampleFormControlInput1" class="form-label">Keahlian<i
                                     class="text-danger"></i></label>
                             <input type="text" name="ahli" class="form-control" id="ahli">
                         </div>
@@ -44,14 +44,14 @@
                     </div>
                     <div class="col-lg-6 col-sm-6">
                         <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Tanggal Awal<i
+                            <label for="awal" class="form-label">Tanggal Awal<i
                                     class="text-danger"></i></label>
                             <input type="date" name="awal" class="form-control" id="awal">
                         </div>
                     </div>
                     <div class="col-lg-6 col-sm-6">
                         <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Tanggal Akhir<i
+                            <label for="akhir" class="form-label">Tanggal Akhir<i
                                     class="text-danger"></i></label>
                             <input type="date" name="akhir" class="form-control" id="akhir">
                         </div>
@@ -100,14 +100,13 @@
                 </tfoot>
                 <tbody>
                     <?php $no = 1; ?>
-                    @foreach ($data as $key)
                     @foreach ($bayar as $key)
                         <tr>
                             <td>{{ $no++ }}</td>
                             <td>{{ $key->username_tukang }}</td>
                             <td>{{ $key->keahlian_tukang }}</td>
-                            <td>{{ $key->tgl_mulai }}</td>
-                            <td>{{ $key->tgl_selesai }}</td>
+                            <td>{{ $key->tgl_mulai->format('d F Y') }}</td>
+                            <td>{{ $key->tgl_selesai->format('d F Y') }}</td>
                             <td>{{ $key->total }}</td>
                             <td><img src="{{ asset('storage/'.$key->bukti_byr) }}" alt="" width="100px"></td>
                             <td>{{ $key->status }}</td>
@@ -122,7 +121,6 @@
                                 </form>
                             </td>
                         </tr>
-                    @endforeach                
                     @endforeach
                 </tbody>
             </table>
