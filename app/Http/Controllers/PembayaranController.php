@@ -26,6 +26,7 @@ class PembayaranController extends Controller
     //              $query->where('nama_pelanggan','LIKE','%'. $request->pelanggan.'%');
     //          });
     //      }
+    
 
     //      if ($request->total != "") {
     //          $data = $data->where('total','LIKE','%'.$request->total.'%');
